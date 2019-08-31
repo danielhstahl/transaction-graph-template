@@ -1,0 +1,4 @@
+{
+    "url": "ws://localhost:8182/gremlin",
+    "port": 3001
+}
