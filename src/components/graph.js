@@ -13,6 +13,10 @@ const convertNodesToGraphNodes = nodes => nodes.map(node => {
 })
 
 const options = {
+    autoResize: true,
+    height: '100%',
+    width: '100%',
+    locale: 'en',
     layout: {
     },
     physics: {
@@ -54,7 +58,7 @@ const options = {
 
 const events = {
     select: (event) => {
-        const { nodes, edges } = event
+        //const { nodes, edges } = event
         console.log(event)
         //console.log(edges)
     }
@@ -68,7 +72,7 @@ export const TestGraph = ({ nodes, edges }) => {
         graph={myGraph}
         options={options}
         events={events}
-        style={{ height, width }}
+    //style={{ height, width }}
     //style={style}
     //getNetwork={this.getNetwork}
     //getEdges={this.getEdges}
