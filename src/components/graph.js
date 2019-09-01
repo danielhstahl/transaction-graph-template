@@ -3,10 +3,6 @@ import React from 'react';
 import Graph from 'vis-react'
 
 
-const width = 1000
-const height = 750
-
-
 const convertNodesToGraphNodes = nodes => nodes.map(node => {
     const group = node.is_main ? 'main' : (node.alert ? 'alert' : (node.is_customer ? 'customer' : node.group))
     return { ...node, group }
@@ -72,11 +68,5 @@ export const TestGraph = ({ nodes, edges }) => {
         graph={myGraph}
         options={options}
         events={events}
-    //style={{ height, width }}
-    //style={style}
-    //getNetwork={this.getNetwork}
-    //getEdges={this.getEdges}
-    //getNodes={this.getNodes}
-    //vis={vis => (this.vis = vis)}
     />)
 }

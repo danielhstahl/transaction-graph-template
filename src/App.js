@@ -8,10 +8,43 @@ import './App.css'
 import { getTransactions } from './services/graphConvertor'
 import Layout from 'antd/es/layout';
 const { Header, Sider, Content } = Layout
-const dollarMarks = { 0: '0', 40000: '40000' }
-const interactionMarks = { 1: '1', 2: '2', 3: '3' }
-const daysMarks = { 1: '1', 180: '180' }
+
 const siderStyles = { margin: 30 }
+const siderColors = { color: 'white' }
+const dollarMarks = {
+  0: {
+    style: siderColors,
+    label: '0',
+  },
+  40000: {
+    style: siderColors,
+    label: '$40,000'
+  }
+}
+const interactionMarks = {
+  1: {
+    style: siderColors,
+    label: '1',
+  },
+  2: {
+    style: siderColors,
+    label: '2'
+  },
+  3: {
+    style: siderColors,
+    label: '3'
+  }
+}
+const daysMarks = {
+  1: {
+    style: siderColors,
+    label: '1',
+  },
+  180: {
+    style: siderColors,
+    label: '180'
+  }
+}
 const App = () => {
   const [dollarAmount, setDollarAmount] = useState(20000)
   const [days, setDays] = useState(3)
@@ -35,17 +68,25 @@ const App = () => {
       </Header>
 
       <Layout>
-        <Sider breakpoint="md" width={300} collapsedWidth={0}>
+        <Sider className='sidebar-items' breakpoint="md" width={300} collapsedWidth={0}>
           <div style={siderStyles}>
             <Input
               placeholder="Account Number" value={accountNumber}
               onChange={e => setAccountNumber(e.target.value)}
             />
           </div>
-
-          <Slider style={siderStyles} value={dollarAmount} max={40000} onChange={setDollarAmount} marks={dollarMarks} />
-          <Slider style={siderStyles} value={days} min={1} max={180} onChange={setDays} marks={daysMarks} />
-          <Slider style={siderStyles} value={interaction} min={1} max={3} onChange={setInteraction} marks={interactionMarks} />
+          <div style={siderStyles}>
+            <h4 style={siderColors}>Transaction Value</h4>
+            <Slider value={dollarAmount} max={40000} onChange={setDollarAmount} marks={dollarMarks} />
+          </div>
+          <div style={siderStyles}>
+            <h4 style={siderColors}>Days of Transactions</h4>
+            <Slider value={days} min={1} max={180} onChange={setDays} marks={daysMarks} />
+          </div>
+          <div style={siderStyles}>
+            <h4 style={siderColors}>Interaction</h4>
+            <Slider value={interaction} min={1} max={3} onChange={setInteraction} marks={interactionMarks} />
+          </div>
           <Button style={siderStyles} onClick={updateTransactions} type="primary" loading={loading}>
             Submit
             </Button>
