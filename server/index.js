@@ -1,4 +1,4 @@
-const { createClient, getResults } = require('./janusConvertor')
+const { createClient, getNodesAndEdges } = require('./janusConvertor')
 const fastify = require('fastify')({ logger: true })
 const {
     url,
@@ -7,9 +7,14 @@ const {
 // Declare a route
 const client = createClient(url)
 fastify.get('/account/:account_number', (request, reply) => {
-    console.log(request.params)
-    getResults(client).then(res => {
-        reply.send({ data: res })
+    console.log(request.query.interaction_level)
+    getNodesAndEdges(
+        client, request.params.account_number,
+        parseInt(request.query.interaction_level),
+        parseFloat(request.query.transaction_amount),
+        parseInt(request.query.days)
+    ).then(res => {
+        reply.send(res)
     }).catch(e => {
         reply.send({ err: e })
     })
