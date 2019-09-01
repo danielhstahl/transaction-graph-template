@@ -68,7 +68,7 @@ const App = () => {
       </Header>
 
       <Layout>
-        <Sider className='sidebar-items' breakpoint="md" width={300} collapsedWidth={0}>
+        <Sider breakpoint="md" width={300} collapsedWidth={0}>
           <div style={siderStyles}>
             <Input
               placeholder="Account Number" value={accountNumber}
