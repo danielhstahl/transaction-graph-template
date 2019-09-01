@@ -32,10 +32,6 @@ const findInteraction = (accountId, edges, uniqueAccounts, index, maxIndex) => {
         return uniqueAccounts
     }
     const onlyAccountId = edges.filter(edge => edge.to === accountId || edge.from === accountId)
-    console.log(`this is account Id: ${accountId}`)
-    console.log(`this is index: ${index}`)
-    console.log(onlyAccountId)
-    //let holdUniqueAccountId = []
     const getUniqueTo = arrayUtils.getUniqueArray(onlyAccountId, "to").map(v => v.to)
     const getUniqueFrom = arrayUtils.getUniqueArray(onlyAccountId, "from").map(v => v.from)
     const uniqueAccountLocal = arrayUtils.getUniqueArray([...getUniqueTo, ...getUniqueFrom])
@@ -45,7 +41,6 @@ const findInteraction = (accountId, edges, uniqueAccounts, index, maxIndex) => {
         ...findInteraction(accountId, edges, uniqueAccountLocal, index + 1, maxIndex)
     ], []))
 }
-
 
 //replace with real client at some point and real queries
 const getNodesAndEdges = (client, accountId, interactionLevel, dollarAmount, days) => {
