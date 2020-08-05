@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "array_utils": "^1.4.1",
-    "fastify": "^2.8.0",
+    "fastify": "^2.15.1",
     "gremlin": "^3.4.3"
   },
   "devDependencies": {
